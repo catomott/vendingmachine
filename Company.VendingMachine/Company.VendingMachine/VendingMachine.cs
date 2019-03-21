@@ -5,10 +5,10 @@ namespace Company.VendingMachine
 {
     public class VendingMachine
     {
-        private readonly Coin _penny = new Coin(2,2);
-        private readonly Coin _nickle = new Coin(3, 3);
-        private readonly Coin _dime = new Coin(1, 1);
-        private readonly Coin _quarter = new Coin(4, 4);
+        public readonly Coin Penny = new Coin(2,2);
+        public readonly Coin Nickle = new Coin(3, 3);
+        public readonly Coin Dime = new Coin(1, 1);
+        public readonly Coin Quarter = new Coin(4, 4);
 
         private decimal _coinValue;
         public decimal Amount { get; set; }
@@ -33,7 +33,7 @@ namespace Company.VendingMachine
 
         public bool ValidCoin(Coin coin)
         {
-            if (coin.Weight != _penny.Weight || coin.Size != _penny.Size)
+            if (coin.Weight != Penny.Weight || coin.Size != Penny.Size)
             {
                 return true;
             }
@@ -45,17 +45,17 @@ namespace Company.VendingMachine
         {
             try
             {
-                if (coin.Weight != _penny.Weight && coin.Size != _penny.Size)
+                if (coin.Weight != Penny.Weight && coin.Size != Penny.Size)
                 {
-                    if (coin.Weight == _nickle.Weight && coin.Size == _nickle.Size)
+                    if (coin.Weight == Nickle.Weight && coin.Size == Nickle.Size)
                     {
                         _coinValue = 0.05M;
                     }
-                    else if (coin.Weight == _dime.Weight && coin.Size == _dime.Size)
+                    else if (coin.Weight == Dime.Weight && coin.Size == Dime.Size)
                     {
                         _coinValue = 0.10M;
                     }
-                    else if (coin.Weight == _quarter.Weight && coin.Size == _quarter.Size)
+                    else if (coin.Weight == Quarter.Weight && coin.Size == Quarter.Size)
                     {
                         _coinValue = 0.25M;
                     }
