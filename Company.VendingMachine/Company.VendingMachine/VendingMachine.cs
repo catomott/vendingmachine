@@ -5,10 +5,12 @@ namespace Company.VendingMachine
 {
     public class VendingMachine
     {
+        private const decimal V = 1.00M;
         public readonly Coin Penny = new Coin(2,2);
         public readonly Coin Nickle = new Coin(3, 3);
         public readonly Coin Dime = new Coin(1, 1);
         public readonly Coin Quarter = new Coin(4, 4);
+
 
         private decimal _coinValue;
         public decimal Amount { get; set; }
@@ -63,6 +65,7 @@ namespace Company.VendingMachine
                     {
                         _coinValue = 0.00M;
                     }
+                    
                 }
                 else
                 {
@@ -87,8 +90,24 @@ namespace Company.VendingMachine
             Amount += amount;
         }
 
+        public bool Dispense(decimal amount)
+        {
+            if(amount == 1.00M)
+            {
+                Display(1.00M);
+                return true;
+            }
+            return false;
+        }
+
+
+
         public string Display(decimal amount)
         {
+            if(amount == 1.00M)
+            {
+                return "THANK YOU";
+            }
             return amount != 0.00M ? Amount.ToString() : "INSERT COIN";
         }
     }

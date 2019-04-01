@@ -166,5 +166,42 @@ namespace Company.VendingMachine.Tests
             Assert.True(_vendingMachine.CoinReturn());
         }
         #endregion
+
+        #region SELECT PRODUCT
+        [Fact]
+        public void ColaPrice()
+        {
+            Assert.Equal(1.00M , Product.Cola);
+        }
+
+        [Fact]
+        public void ChipsPrice()
+        {
+            Assert.Equal(0.50M , Product.Chips);
+        }
+
+        [Fact]
+        public void CandyPrice()
+        {
+            Assert.Equal(0.65M , Product.Candy);
+        }
+
+        [Fact]
+        public void ColaDispensed()
+        {
+            _vendingMachine.InsertCoin(_vendingMachine.Quarter);
+            _vendingMachine.InsertCoin(_vendingMachine.Quarter);
+            _vendingMachine.InsertCoin(_vendingMachine.Quarter);
+            _vendingMachine.InsertCoin(_vendingMachine.Quarter);
+            Assert.True(_vendingMachine.Dispense(_vendingMachine.Amount));
+        }
+
+        [Fact]
+        public void DisplayThankYou()
+        {
+            Assert.Equal("THANK YOU", _vendingMachine.Display(1.00M));
+        }
+        
+        #endregion
     }
 }
